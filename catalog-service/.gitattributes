@@ -1,3 +1,1 @@
-/mvnw text eol=lf
-*.cmd text eol=crlf
-mvnw mode=755
+catalog-service/mvnw mode=755 eol=lf
