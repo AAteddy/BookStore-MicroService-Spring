@@ -6,7 +6,7 @@ public class TestCatalogServiceApplication {
 
     public static void main(String[] args) {
         SpringApplication.from(CatalogServiceApplication::main)
-                .with(TestcontainersConfiguration.class)
+                .with(TestContainersConfiguration.class)
                 .run(args);
     }
 }
