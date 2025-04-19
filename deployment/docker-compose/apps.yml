@@ -1,4 +1,3 @@
-version: "3.8"
 name: 'BookStore-MicroService-Spring'
 services:
   catalog-service:

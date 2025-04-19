@@ -1,2 +1,1 @@
-catalog-service/mvnw mode=755 eol=lf **/*.java eol=lf
-
+order-service/mvnw mode=755 eol=lf

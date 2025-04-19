@@ -1,4 +1,3 @@
-version: "3.8"
 name: 'bookstore-microservice'
 services:
   catalog-db:
@@ -40,7 +39,7 @@ services:
           memory: 500m
 
   bookstore-rabbitmq:
-    image: rabbitmq:4.0.4-management
+    image: rabbitmq:3.12.11-management
     container_name: bookstore-rabbitmq
     environment:
       - RABBITMQ_DEFAULT_USER=guest
