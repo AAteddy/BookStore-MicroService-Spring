@@ -1,4 +1,3 @@
 package com.teddyHub.bookstore.orders.domain.models;
 
-public record CreateOrderResponse() {
-}
+public record CreateOrderResponse(String orderNumber) {}
