@@ -1,14 +1,11 @@
 package com.teddyHub.bookstore.catalog.web.controllers;
 
-
 import com.teddyHub.bookstore.catalog.domain.PagedResult;
 import com.teddyHub.bookstore.catalog.domain.Product;
 import com.teddyHub.bookstore.catalog.domain.ProductNotFoundException;
 import com.teddyHub.bookstore.catalog.domain.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/products")
