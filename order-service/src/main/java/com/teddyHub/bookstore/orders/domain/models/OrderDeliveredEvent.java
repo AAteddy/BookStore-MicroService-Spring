@@ -3,7 +3,7 @@ package com.teddyHub.bookstore.orders.domain.models;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-public record OrderDeliveryEvent(
+public record OrderDeliveredEvent(
         String eventId,
         String orderNumber,
         Set<OrderItem> items,

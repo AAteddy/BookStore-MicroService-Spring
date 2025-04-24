@@ -1,4 +1,13 @@
 package com.teddyHub.bookstore.orders.domain.models;
 
-public record OrderCreatedEvent() {
-}
+import java.time.LocalDateTime;
+import java.util.Set;
+
+public record OrderCreatedEvent(
+        String eventId,
+        String orderNumber,
+        Set<OrderItem> items,
+        Customer customer,
+        Address deliversyAddress,
+        LocalDateTime createdAt)
+{}
