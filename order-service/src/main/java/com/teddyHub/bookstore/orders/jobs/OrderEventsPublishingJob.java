@@ -2,6 +2,8 @@ package com.teddyHub.bookstore.orders.jobs;
 
 
 import com.teddyHub.bookstore.orders.domain.OrderEventService;
+import net.javacrumbs.shedlock.core.LockAssert;
+import net.javacrumbs.shedlock.spring.annotation.SchedulerLock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -20,7 +22,9 @@ public class OrderEventsPublishingJob {
     }
 
     @Scheduled(cron = "${orders.publish-order-events-job-cron}")
+    @SchedulerLock(name = "publishOrderEvents")
     public void publishOrderEvents() {
+        LockAssert.assertLocked();
         log.info("Publishing Order Events at {}", Instant.now());
         orderEventService.publishOrderEvents();
     }
