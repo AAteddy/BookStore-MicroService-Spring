@@ -1,7 +1,6 @@
 package com.teddyHub.bookstore.orders.domain;
 
-import com.teddyHub.bookstore.orders.domain.models.OrderCreatedEvent;
-import com.teddyHub.bookstore.orders.domain.models.OrderItem;
+import com.teddyHub.bookstore.orders.domain.models.*;
 
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -17,6 +16,38 @@ public class OrderEventMapper {
                 getOrderItems(order),
                 order.getCustomer(),
                 order.getDeliveryAddress(),
+                LocalDateTime.now());
+    }
+
+    static OrderDeliveredEvent buildOrderDeliveredEvent(OrderEntity order) {
+        return new OrderDeliveredEvent(
+                UUID.randomUUID().toString(),
+                order.getOrderNumber(),
+                getOrderItems(order),
+                order.getCustomer(),
+                order.getDeliveryAddress(),
+                LocalDateTime.now());
+    }
+
+    static OrderCancelledEvent buildOrderCancelledEvent(OrderEntity order, String reason) {
+        return new OrderCancelledEvent(
+                UUID.randomUUID().toString(),
+                order.getOrderNumber(),
+                getOrderItems(order),
+                order.getCustomer(),
+                order.getDeliveryAddress(),
+                reason,
+                LocalDateTime.now());
+    }
+
+    static OrderErrorEvent buildOrderErrorEvent(OrderEntity order, String reason) {
+        return new OrderErrorEvent(
+                UUID.randomUUID().toString(),
+                order.getOrderNumber(),
+                getOrderItems(order),
+                order.getCustomer(),
+                order.getDeliveryAddress(),
+                reason,
                 LocalDateTime.now());
     }
 
