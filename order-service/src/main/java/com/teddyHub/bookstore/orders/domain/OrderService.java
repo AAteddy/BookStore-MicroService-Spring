@@ -1,16 +1,14 @@
 package com.teddyHub.bookstore.orders.domain;
 
 
-import com.teddyHub.bookstore.orders.domain.models.CreateOrderRequest;
-import com.teddyHub.bookstore.orders.domain.models.CreateOrderResponse;
-import com.teddyHub.bookstore.orders.domain.models.OrderCreatedEvent;
-import com.teddyHub.bookstore.orders.domain.models.OrderStatus;
+import com.teddyHub.bookstore.orders.domain.models.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -29,6 +27,15 @@ public class OrderService {
         this.orderRepository = orderRepository;
         this.orderValidator = orderValidator;
         this.orderEventService = orderEventService;
+    }
+
+    public List<OrderSummary> findOrders(String userName) {
+        return orderRepository.findByUserName(userName);
+    }
+
+    public Optional<OrderDTO> findUserOrder(String userName, String orderNumber) {
+        return orderRepository.findByUserNameAndOrderNumber(userName, orderNumber)
+                .map(OrderMapper::convertToDTO);
     }
 
     public CreateOrderResponse createOrder(
