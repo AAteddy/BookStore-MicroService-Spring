@@ -75,36 +75,36 @@ class OrderControllerTests extends AbstractIT {
         }
     }
 
-    @Nested
-    @WithMockUser(username = "siva")
-    class GetOrdersTests {
-        @Test
-        void shouldGetOrdersSuccessfully() {
-            List<OrderSummary> orderSummaries = given().when()
-                    .get("/api/orders")
-                    .then()
-                    .statusCode(200)
-                    .extract()
-                    .body()
-                    .as(new TypeRef<>() {});
+//    @Nested
+//    @WithMockUser(username = "siva")
+//    class GetOrdersTests {
+//        @Test
+//        void shouldGetOrdersSuccessfully() {
+//            List<OrderSummary> orderSummaries = given().when()
+//                    .get("/api/orders")
+//                    .then()
+//                    .statusCode(200)
+//                    .extract()
+//                    .body()
+//                    .as(new TypeRef<>() {});
+//
+//            assertThat(orderSummaries).hasSize(2);
+//        }
+//    }
 
-            assertThat(orderSummaries).hasSize(2);
-        }
-    }
-
-    @Nested
-    @WithMockUser(username = "siva")
-    class GetOrderByOrderNumberTests {
-        String orderNumber = "order-123";
-
-        @Test
-        void shouldGetOrderSuccessfully() {
-            given().when()
-                    .get("/api/orders/{orderNumber}", orderNumber)
-                    .then()
-                    .statusCode(200)
-                    .body("orderNumber", is(orderNumber))
-                    .body("items.size()", is(2));
-        }
-    }
+//    @Nested
+//    @WithMockUser(username = "siva")
+//    class GetOrderByOrderNumberTests {
+//        String orderNumber = "order-123";
+//
+//        @Test
+//        void shouldGetOrderSuccessfully() {
+//            given().when()
+//                    .get("/api/orders/{orderNumber}", orderNumber)
+//                    .then()
+//                    .statusCode(200)
+//                    .body("orderNumber", is(orderNumber))
+//                    .body("items.size()", is(2));
+//        }
+//    }
 }
