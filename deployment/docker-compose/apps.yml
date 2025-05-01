@@ -24,6 +24,7 @@ services:
     container_name: order-service
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+      - ORDERS_CATALOG_SERVICE_URL=http://catalog-service:8081
       - DB_URL=jdbc:postgresql://orders-db:5432/postgres
       - DB_USERNAME=postgres
       - DB_PASSWORD=postgres
@@ -42,4 +43,4 @@ services:
     deploy:
       resources:
         limits:
-          memory: 700m
+          memory: 1g
