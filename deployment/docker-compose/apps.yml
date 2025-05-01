@@ -43,4 +43,4 @@ services:
     deploy:
       resources:
         limits:
-          memory: 700m
+          memory: 1g
